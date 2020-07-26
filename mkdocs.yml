@@ -1,0 +1,49 @@
+site_name: TopJava
+site_description: java成长之路
+repo_url: https://github.com/nodemcu/nodemcu-firmware/
+
+# 主题配置
+theme:
+  name: "readthedocs"
+strict: false
+markdown_extensions:
+  - admonition:
+  - toc:
+      permalink: True
+# 目录
+pages:
+  - 简介: "index.md"
+  - 基础:
+      - Java中的数据类型: base/datatype.md
+      - Java中类加载机制: base/classload.md
+      - String字符串: base/string.md
+      - 集合: base/collections.md
+      - 值传递和引用传递: base/valuetransfer.md
+      - map集合: base/map.md
+      - list容器: base/list.md
+  - 并发:
+      - 并发的定义: concurrent/index.md
+      - 分布式锁: concurrent/lock.md
+      - 单例模式: concurrent/singleton.md
+      - CAS: concurrent/cas.md
+      - 阻塞队列: concurrent/queue.md
+  - JVM和GC:
+      - jvm基础知识: jvm/index.md
+      - jvm面试题: jvm/interview.md
+  - MQ消息队列:
+      - 消息队列: mq/index.md
+  - nosql数据库:
+      - redis: nosql/redis.md
+  - spring框架:
+      - spring框架基础知识: spring/index.md
+      - 面实题集合: spring/interview.md
+  - mybatis框架:
+      - 基础知识: mybatis/index.md
+      - 面试题: mybatis/interview.md
+  - 关系型数据库:
+      - mysql: mysql/index.md
+  - zookeeper:
+      - 基础知识: zookeeper/index.md
+      - 面试题: zookeeper/interview.md
+  - oauth2.0 微服务认证授权:
+      - spring cloud构建认证服务: oauth20/authserver.md
