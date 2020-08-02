@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  
+  
+  <link rel="shortcut icon" href="../../img/favicon.ico">
+  <title>redis - TopJava</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700" />
+
+  <link rel="stylesheet" href="../../css/theme.css" />
+  <link rel="stylesheet" href="../../css/theme_extra.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css" />
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "redis";
+    var mkdocs_page_input_path = "nosql\\redis.md";
+    var mkdocs_page_url = null;
+  </script>
+  
+  <script src="../../js/jquery-2.1.1.min.js" defer></script>
+  <script src="../../js/modernizr-2.8.3.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script> 
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+        <a href="../.." class="icon icon-home"> TopJava</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../..">简介</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">基础</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../base/datatype/">Java中的数据类型</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../base/classload/">Java中类加载机制</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../base/string/">String字符串</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../base/collections/">集合</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../base/valuetransfer/">值传递和引用传递</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../base/map/">map集合</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../base/list/">list容器</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">并发</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../concurrent/">并发的定义</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../concurrent/lock/">分布式锁</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../concurrent/singleton/">单例模式</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../concurrent/cas/">CAS</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../concurrent/queue/">阻塞队列</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">JVM和GC</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../jvm/">jvm基础知识</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../jvm/interview/">jvm面试题</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">MQ消息队列</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../mq/">消息队列</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">nosql数据库</span></p>
+                <ul class="current">
+                    <li class="toctree-l1 current"><a class="reference internal current" href="./">redis</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#16384">16384 个槽位</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#redis_1">redis 工作原理</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#redis-redis">redis 的单线程模型，为什么 redis 单线程速度还那么快？</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#_1">命令</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#list">list</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#_2">淘汰策略</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#lru-ttl">lru 算法和 ttl 算法</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#_3">事务</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#_4">持久化</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#sentinel">sentinel 哨兵模式</a>
+    </li>
+    </ul>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">spring框架</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../spring/">spring框架基础知识</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../spring/interview/">面实题集合</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">mybatis框架</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../mybatis/">基础知识</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../mybatis/interview/">面试题</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">关系型数据库</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../mysql/">mysql</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">zookeeper</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../zookeeper/">基础知识</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../zookeeper/interview/">面试题</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">oauth2.0 微服务认证授权</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../oauth20/authserver/">spring cloud构建认证服务</a>
+                    </li>
+                </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../..">TopJava</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../..">Docs</a> &raquo;</li>
+    
+      
+        
+          <li>nosql数据库 &raquo;</li>
+        
+      
+    
+    <li>redis</li>
+    <li class="wy-breadcrumbs-aside">
+      
+        <a href="https://github.com/BruceAKABear/TopJava/edit/master/docs/nosql/redis.md"
+          class="icon icon-github"> Edit on GitHub</a>
+      
+    </li>
+  </ul>
+  
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <h1 id="redis">redis<a class="headerlink" href="#redis" title="Permanent link">&para;</a></h1>
+<h2 id="16384">16384 个槽位<a class="headerlink" href="#16384" title="Permanent link">&para;</a></h2>
+<p>crc 算法后取模 16384 得到最后的集群中</p>
+<h2 id="redis_1">redis 工作原理<a class="headerlink" href="#redis_1" title="Permanent link">&para;</a></h2>
+<h2 id="redis-redis">redis 的单线程模型，为什么 redis 单线程速度还那么快？<a class="headerlink" href="#redis-redis" title="Permanent link">&para;</a></h2>
+<p>文件事件处理器是单线程的，</p>
+<p>单线程加多路 io 复用技术</p>
+<p>单线程多路 io 复用，在单线程中是没有阻塞的</p>
+<p>io 复用又 select、poll\epoll 三种模式</p>
+<p>利用一个线程检测 socket 的就绪状态</p>
+<h2 id="_1">命令<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
+<p>set a 1
+get a
+keys *
+exists a
+del a</p>
+<p>expire a 10
+ttl a</p>
+<p>dbsize</p>
+<p>flushdb</p>
+<p>flushall</p>
+<h2 id="list">list<a class="headerlink" href="#list" title="Permanent link">&para;</a></h2>
+<p>双向链表，头插 lpush/尾插/rpush 性能高</p>
+<p>弹出获取操作，lpop/rpop key</p>
+<h2 id="_2">淘汰策略<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
+<h2 id="lru-ttl">lru 算法和 ttl 算法<a class="headerlink" href="#lru-ttl" title="Permanent link">&para;</a></h2>
+<p>lru 最近最少使用算法</p>
+<p>两种算法都是不精确的，是估算的</p>
+<h2 id="_3">事务<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h2>
+<p>redis 的事务更像一组指令需要一起完成，中间不允许其他的指令执行</p>
+<p>如果报告错误，比如命令用错了单词写错了，会取消事务</p>
+<p>如果执行阶段错误（比如对字符串进行 incr 加法），其他命令还是会执行，不会回滚</p>
+<h2 id="_4">持久化<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h2>
+<p>rdb 持久化存储数据，恢复数据块</p>
+<p>fork 一个进程，先将数据写入零时文件，待持久化过程结束以后用零时文件替换上次持久化文件</p>
+<p>一般情况下父子进程公用内存，需要持久化时从父进程复制内容给子进程</p>
+<p>写时复制</p>
+<p>如果不满足保存策略那么最后一次快照数据异常关闭数据会丢失</p>
+<p>恢复数据的话直接拷贝到目录下启动就可行</p>
+<p>rdb 节省空间</p>
+<p>aof 持久化</p>
+<p>以日志的形式记录所有写操作，追加文件，redis 启动后会读取文件重新构建数据
+可以通过 rewrite 只保存最小指令</p>
+<p>默认不开启，</p>
+<p>占用空间大</p>
+<p>如果同时开启，aof 优先级最高</p>
+<p>官方推荐两个同时用，如果单单缓存直接不用持久化</p>
+<h2 id="sentinel">sentinel 哨兵模式<a class="headerlink" href="#sentinel" title="Permanent link">&para;</a></h2>
+<p>自动选择一台主服务器</p>
+<p>必须要在主从复制模式</p>
+<p>选主条件：1.优先级靠前的 2.获取原主数据最多的 3.每个 redis 启动后会生成 40 为 uuid,uuid 最小的</p>
+              
+            </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../../spring/" class="btn btn-neutral float-right" title="spring框架基础知识">Next <span class="icon icon-circle-arrow-right"></span></a>
+      
+      
+        <a href="../../mq/" class="btn btn-neutral" title="消息队列"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+      
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+          <a href="https://github.com/BruceAKABear/TopJava/" class="fa fa-github" style="float: left; color: #fcfcfc"> GitHub</a>
+      
+      
+        <span><a href="../../mq/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+      
+      
+        <span style="margin-left: 15px"><a href="../../spring/" style="color: #fcfcfc">Next &raquo;</a></span>
+      
+    </span>
+</div>
+    <script>var base_url = '../..';</script>
+    <script src="../../js/theme.js" defer></script>
+      <script src="../../search/main.js" defer></script>
+    <script defer>
+        window.onload = function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        };
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  
+  
+  <link rel="shortcut icon" href="../img/favicon.ico">
+  <title>mysql - TopJava</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700" />
+
+  <link rel="stylesheet" href="../css/theme.css" />
+  <link rel="stylesheet" href="../css/theme_extra.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css" />
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "mysql";
+    var mkdocs_page_input_path = "mysql\\index.md";
+    var mkdocs_page_url = null;
+  </script>
+  
+  <script src="../js/jquery-2.1.1.min.js" defer></script>
+  <script src="../js/modernizr-2.8.3.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script> 
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+        <a href=".." class="icon icon-home"> TopJava</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="..">简介</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">基础</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../base/datatype/">Java中的数据类型</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../base/classload/">Java中类加载机制</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../base/string/">String字符串</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../base/collections/">集合</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../base/valuetransfer/">值传递和引用传递</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../base/map/">map集合</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../base/list/">list容器</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">并发</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../concurrent/">并发的定义</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../concurrent/lock/">分布式锁</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../concurrent/singleton/">单例模式</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../concurrent/cas/">CAS</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../concurrent/queue/">阻塞队列</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">JVM和GC</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../jvm/">jvm基础知识</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../jvm/interview/">jvm面试题</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">MQ消息队列</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../mq/">消息队列</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">nosql数据库</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../nosql/redis/">redis</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">spring框架</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../spring/">spring框架基础知识</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../spring/interview/">面实题集合</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">mybatis框架</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../mybatis/">基础知识</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../mybatis/interview/">面试题</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">关系型数据库</span></p>
+                <ul class="current">
+                    <li class="toctree-l1 current"><a class="reference internal current" href="./">mysql</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#_1">数据库设计三范式</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#_2">存储引擎选择</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#_3">索引</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#1">1. 创建索引原则</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#mysql_1">MySQL 实际调优</a>
+    </li>
+    </ul>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">zookeeper</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../zookeeper/">基础知识</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../zookeeper/interview/">面试题</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">oauth2.0 微服务认证授权</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../oauth20/authserver/">spring cloud构建认证服务</a>
+                    </li>
+                </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="..">TopJava</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="..">Docs</a> &raquo;</li>
+    
+      
+        
+          <li>关系型数据库 &raquo;</li>
+        
+      
+    
+    <li>mysql</li>
+    <li class="wy-breadcrumbs-aside">
+      
+        <a href="https://github.com/BruceAKABear/TopJava/edit/master/docs/mysql/index.md"
+          class="icon icon-github"> Edit on GitHub</a>
+      
+    </li>
+  </ul>
+  
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <h1 id="mysql">关系型数据库 MySQL<a class="headerlink" href="#mysql" title="Permanent link">&para;</a></h1>
+<h2 id="_1">数据库设计三范式<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
+<ol>
+<li>有主键</li>
+<li>列最小不可分</li>
+<li>消除依赖传递</li>
+</ol>
+<h2 id="_2">存储引擎选择<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>引擎类型</th>
+<th>特点</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>innodb</td>
+<td>支持事务，支持行锁，innodb 中的页大小为 16K 大概能存 80 亿</td>
+</tr>
+<tr>
+<td>myisam</td>
+<td>不支持事务</td>
+</tr>
+</tbody>
+</table>
+<h2 id="_3">索引<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h2>
+<p>索引是一种数据结构，可以加快查询。</p>
+<p>索引有多种，有 hash 索引没办法范围查找。二叉树，如果数据特殊树会呈线性。平衡二叉树，如果数据量很大，那么树的高度会很高，磁盘 io 次数会特别多。b 树不只有一个叉，但是扫库扫表能力不强。b+树数据存储在叶子节点，范围查询能力强，io 次数少，查询效率稳定 io 次数稳定</p>
+<h3 id="1">1. 创建索引原则<a class="headerlink" href="#1" title="Permanent link">&para;</a></h3>
+<p>列的离散度越高越好</p>
+<h2 id="mysql_1">MySQL 实际调优<a class="headerlink" href="#mysql_1" title="Permanent link">&para;</a></h2>
+              
+            </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../zookeeper/" class="btn btn-neutral float-right" title="基础知识">Next <span class="icon icon-circle-arrow-right"></span></a>
+      
+      
+        <a href="../mybatis/interview/" class="btn btn-neutral" title="面试题"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+      
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+          <a href="https://github.com/BruceAKABear/TopJava/" class="fa fa-github" style="float: left; color: #fcfcfc"> GitHub</a>
+      
+      
+        <span><a href="../mybatis/interview/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+      
+      
+        <span style="margin-left: 15px"><a href="../zookeeper/" style="color: #fcfcfc">Next &raquo;</a></span>
+      
+    </span>
+</div>
+    <script>var base_url = '..';</script>
+    <script src="../js/theme.js" defer></script>
+      <script src="../search/main.js" defer></script>
+    <script defer>
+        window.onload = function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        };
+    </script>
+
+</body>
+</html>
