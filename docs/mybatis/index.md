@@ -11,3 +11,5 @@ mybatis-spring 这个项目中，sqlsession 不整合 spring 使用的是 defaul
 因为 mybatis-sring 整合包中扩展了 sqlsessiontemplate 类，在 spring 容器启动的时候注入给了 mapper 替代了 defaultsqssionfactory,sst 中的方法不是直接查询而是被代理了，在 invoke 方法中 finally 中调用了 closesqlsession.
 
 ### mybatis 一级缓存的实现原理
+
+一级缓存是sqlswssion级别的缓存，在spring-mybatis中失效
